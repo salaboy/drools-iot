@@ -9,15 +9,15 @@ package com.salaboy.warehouse;
 
 
 
-import com.salaboy.warehouse.endpoint.api.WarehouseItemsService;
 import com.salaboy.warehouse.endpoint.config.AuthRESTResponseFilter;
 import com.salaboy.warehouse.endpoint.exception.BusinessException;
 import com.salaboy.warehouse.endpoint.exception.HttpStatusExceptionHandler;
-import com.salaboy.warehouse.endpoint.impl.WarehouseItemsServiceImpl;
+import com.salaboy.warehouse.endpoint.impl.HardwareServiceImpl;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.keycloak.Secured;
+import com.salaboy.warehouse.endpoint.api.HardwareService;
 
 /**
  *
@@ -34,8 +34,8 @@ public class App {
         deployment.as(Secured.class);
         deployment.setContextRoot("/api");
         deployment.addPackage("com.salaboy.warehouse.model");
-        deployment.addResource(WarehouseItemsService.class);
-        deployment.addResource(WarehouseItemsServiceImpl.class);
+        deployment.addResource(HardwareService.class);
+        deployment.addResource(HardwareServiceImpl.class);
         deployment.addClass(HttpStatusExceptionHandler.class);
         deployment.addClass(BusinessException.class);
         deployment.addClass(AuthRESTResponseFilter.class);

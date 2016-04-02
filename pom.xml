@@ -19,7 +19,7 @@
         
         <module>hardware-model</module>
         <module>hardware-services</module>
-
+        <module>drools-iot-pojorules</module>
     </modules>
   
     <repositories>

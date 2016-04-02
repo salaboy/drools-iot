@@ -12,3 +12,5 @@
 hs_err_pid*
 /hardware-model/target/
 /hardware-services/target/
+/drools-iot-pojorules/target/
+/drools-iot-pojorules/nbproject/

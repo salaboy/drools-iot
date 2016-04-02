@@ -5,6 +5,7 @@
  */
 package com.salaboy.warehouse.model;
 
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -12,28 +13,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author salaboy
  */
 @XmlRootElement
-public class Item {
+public class Sensor {
 
-    public enum Category {
-        FOOD, TECHNOLOGY, FASHION, ACCESORIES
-    };
+   
     private String id;
     private String name;
-    private int price;
-    private Category category;
+    private int value;
+    
 
-    public Item(String name, int price) {
-        this.name = name;
-        this.price = price;
-    }
 
-    public Item(String id, String name, int price) {
+    public Sensor(String id, String name, int price) {
         this.id = id;
         this.name = name;
-        this.price = price;
     }
 
-    public Item() {
+    public Sensor() {
     }
 
     public String getId() {
@@ -52,32 +46,20 @@ public class Item {
         this.name = name;
     }
 
-    public int getPrice() {
-        return price;
+    public int getValue() {
+        return value;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    @Override
-    public String toString() {
-        return "Item{" + "id=" + id + ", name=" + name + ", price=" + price + ", category=" + category + '}';
+    public void setValue(int value) {
+        this.value = value;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 73 * hash + (this.name != null ? this.name.hashCode() : 0);
-        hash = 73 * hash + this.price;
+        int hash = 7;
+        hash = 19 * hash + Objects.hashCode(this.id);
+        hash = 19 * hash + Objects.hashCode(this.name);
+        hash = 19 * hash + this.value;
         return hash;
     }
 
@@ -92,14 +74,24 @@ public class Item {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Item other = (Item) obj;
-        if (this.price != other.price) {
+        final Sensor other = (Sensor) obj;
+        if (this.value != other.value) {
             return false;
         }
-        if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Sensor{" + "id=" + id + ", name=" + name + ", value=" + value + '}';
+    }
+
+   
 
 }
